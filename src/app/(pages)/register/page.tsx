@@ -38,7 +38,7 @@ export default function Register() {
        
 
         try{
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`, {
+        const response = await fetch(`https://ecommerce.routemisr.com/api/v1/auth/signup`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: { "content-type": "application/json" }

@@ -7,7 +7,7 @@ import React from 'react'
 export default async function Brands() {
 
   let data: AllBrands = await getAllBrands()
-  console.log(data, "Brandss");
+ 
 
 
 

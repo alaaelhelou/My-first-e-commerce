@@ -40,7 +40,7 @@ export default async function ProductDetails({params} : {params : Promise<{id : 
 
     console.log(id , "idd");
 
-    let response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/products/${id}`)
+    let response = await fetch(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
     
     
 

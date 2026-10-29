@@ -5,8 +5,11 @@ import Link from 'next/link'
 import React from 'react'
 
 export default async function categories() {
-  const data = await getAllCategories();
-  console.log(data);
+
+
+ const data = await getAllCategories();
+
+
   
 
   return (
