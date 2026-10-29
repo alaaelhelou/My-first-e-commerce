@@ -2,7 +2,7 @@
 
 export const getAllCategories = async ()=>{
     
-    let response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/categories`)
+    let response = await fetch(`https://ecommerce.routemisr.com/api/v1/categories`)
     console.log(response);
 
     let { data } = await response.json();
