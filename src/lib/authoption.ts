@@ -3,6 +3,11 @@ import Credentials from 'next-auth/providers/credentials';
 import { jwtDecode } from "jwt-decode";
 
 
+interface DecodedToken {
+  id: string;
+}
+
+
 export const authOptions : NextAuthOptions = {
 
     pages : {
@@ -18,7 +23,7 @@ export const authOptions : NextAuthOptions = {
                 password: {}
 
             },
-            async authorize(credentials: any) {
+            async authorize(credentials) {
               
                 const res = await fetch("https://ecommerce.routemisr.com/api/v1/auth/signin", {
                     method: 'POST',
@@ -31,7 +36,8 @@ export const authOptions : NextAuthOptions = {
 
                 if (data.message === "success") {
 
-                    const decoded = jwtDecode(data.token);
+                  
+                   const decoded = jwtDecode<DecodedToken>(data.token);
 
                     console.log(decoded);
 
