@@ -49,7 +49,7 @@ export default function Register() {
         if(finalResponse.message==="success"){
              await new Promise((resolve) => setTimeout(resolve, 2000));
         toast.success("Account created successfully" , {
-            duration : 4000
+            duration : 2000
         })
 
         router.push("/login")
