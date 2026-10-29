@@ -17,7 +17,7 @@ import { usePathname } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react';
 import ProfileDropDown from '../profileDropDown/profileDropDown';
 import { getAllSubCategories } from '@/api/AllSubCategory.api';
-import { AllSubCategoriesDataType, AllSubCategoryType } from '@/types/AllSubCategories.type';
+import { AllSubCategoriesDataType} from '@/types/AllSubCategories.type';
 import { CartContext } from '@/context/CartContext';
 import { WishlistContext } from '@/context/WishlistItems';
 
@@ -44,8 +44,9 @@ export default function AppNavbar() {
   const path = usePathname();
  
   async function getSucategory() {
-    let { data }: { data: AllSubCategoryType } = await getAllSubCategories()
-    setsubData(data)
+    let response  = await getAllSubCategories()
+    
+    setsubData(response?.data)
   }
 
   function handleLogOut() {

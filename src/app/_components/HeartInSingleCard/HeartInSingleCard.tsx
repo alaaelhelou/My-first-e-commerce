@@ -7,11 +7,11 @@ import React, { useContext } from 'react'
 
 export default function HeartInSingleCard({ productId }: { productId: string }) {
 
-    console.log(productId , "The original");
+  
 
     const {isProductInWishlistCo} = useContext(IsProductInWishlistContext) as {isProductInWishlistCo : WishlistDataType[]}
     
-   console.log(isProductInWishlistCo ,"tayeeb");
+
 
    const compareIdsAfterAdding = isProductInWishlistCo?.some((item)=>item._id === productId)
                 
