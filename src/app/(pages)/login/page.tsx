@@ -50,6 +50,7 @@ console.log("Login response:", response);
       duration : 2000
     }
     )
+    console.log("Redirecting to home");
     router.replace("/")
   }else{
     toast.error(response?.error || "Login failed")
