@@ -16,7 +16,7 @@ export default function AddProductToWishlist({ productId , compareIds}: { produc
 
     const [isProductIdInWishlist, setIsProductIdInWishlist] = useState(false)
 
-     const {setWishlistCount}  = useContext(WishlistContext)
+     const {setWishlistCount}  = useContext(WishlistContext) as {setWishlistCount : (val: number)=>void}
   
 
     

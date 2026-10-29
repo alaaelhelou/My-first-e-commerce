@@ -9,7 +9,7 @@ export default function AddProductToCartBut({ productId }: { productId: string }
   const [isLoading, setIsLoading] = useState(false)
   const [isChecked, setIsChecked] = useState(false)
   const [cartProducts, setCartProducts] = useState([])
-  const {setCartCount} = useContext(CartContext)
+  const {setCartCount} = useContext(CartContext) as {setCartCount : (val: number)=>void}
 
 
 

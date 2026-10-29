@@ -27,7 +27,7 @@ export default function Cart() {
     const [toFreeShipping, setToFreeShipping] = useState(0)
     const [percenrageToFreeShipping, setPercenrageToFreeShipping] = useState(0)
     const [isLoadingUpadating, setIsLoadingUpadating] = useState(false)
-    const {cartCount ,setCartCount} : {cartCount : string ,setCartCount : string} = useContext(CartContext)
+    const {cartCount ,setCartCount} = useContext(CartContext) as {cartCount : number , setCartCount : (val: number)=>void}
 
     
     async function getUserCart() {

@@ -36,8 +36,9 @@ export default function AppNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [sideBarr, setSideBarr] = useState(false)
   const [subData, setsubData] = useState([])
-  const {cartCount} = useContext(CartContext)
-  const {wishlistCount} = useContext(WishlistContext)
+  const {cartCount} = useContext(CartContext)  as {cartCount : number}
+  const {wishlistCount} = useContext(WishlistContext)  as {wishlistCount : number}
+ 
 
 
   const path = usePathname();

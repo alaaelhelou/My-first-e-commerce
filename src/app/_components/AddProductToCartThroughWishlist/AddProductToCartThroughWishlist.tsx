@@ -14,7 +14,7 @@ export default function AddProductToCartThroughWishlist({ productId }: { product
     const [isChecked, setIsChecked] = useState(false)
     const [cartProducts, setCartProducts] = useState([])
     const [isProductIdInCart, setIsProductIdInCart] = useState(false)
-    const {setCartCount} = useContext(CartContext)
+    const {setCartCount} = useContext(CartContext) as {setCartCount : (val: number)=>void}
 
 
 

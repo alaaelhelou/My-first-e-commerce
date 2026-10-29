@@ -1,5 +1,6 @@
 "use client"
 import { IsProductInWishlistContext } from '@/context/IsProductInWishlist';
+import { WishlistDataType } from '@/types/WishlistProducts';
 import React, { useContext } from 'react'
 
 
@@ -8,7 +9,7 @@ export default function HeartInSingleCard({ productId }: { productId: string }) 
 
     console.log(productId , "The original");
 
-    const {isProductInWishlistCo} = useContext(IsProductInWishlistContext)
+    const {isProductInWishlistCo} = useContext(IsProductInWishlistContext) as {isProductInWishlistCo : WishlistDataType[]}
     
    console.log(isProductInWishlistCo ,"tayeeb");
 

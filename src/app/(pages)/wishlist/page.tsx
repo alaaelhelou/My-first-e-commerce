@@ -12,8 +12,9 @@ import React, { useContext, useEffect, useState } from 'react'
 export default function Wishlist() {
 
     const [data, setData] = useState<AllWishlistType>({} as AllWishlistType)
-    const {setWishlistCount} : {setWishlistCount : string} = useContext(WishlistContext)
-    const {setIsProductInWishlistCo}  = useContext(IsProductInWishlistContext)
+    const {setWishlistCount} = useContext(WishlistContext) as {setWishlistCount : (val: number)=>void}
+    const {setIsProductInWishlistCo}  = useContext(IsProductInWishlistContext) as {setIsProductInWishlistCo : (val : WishlistDataType[])=> void}
+    
 
     
 
