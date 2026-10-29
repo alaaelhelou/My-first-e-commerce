@@ -7,7 +7,8 @@ import { SpecificProductType } from '@/types/SpecificProduct.type';
 
 export default function LikedProducts({allData , data } : {allData:AllProductsArrayType , data:SpecificProductType }) {
 
-    const slider= useRef(null);
+  
+    const slider = useRef<HTMLDivElement | null>(null);
 
     
     const likedProducts =allData.filter((productItem : AllProductsType)=>productItem.category.name === data.category.name)
@@ -18,20 +19,22 @@ export default function LikedProducts({allData , data } : {allData:AllProductsAr
     
 
 
-       const scroll = (direction) => {
-    if (slider.current) {
 
-      const firstCard = slider.current.firstElementChild;
-      if (firstCard) {
-        const cardWidth = firstCard.clientWidth; 
-    
-        slider.current.scrollBy({
-          left: direction === 'left' ? -cardWidth : cardWidth,
-          behavior: 'smooth',
-        });
-      }
-    }
-  };
+  const scroll = (direction: string) => {
+  const container = slider.current;
+  if (!container) return;
+
+  const firstCard = container.firstElementChild as HTMLElement | null;
+
+  if (firstCard) {
+    const cardWidth = firstCard.clientWidth;
+
+    container.scrollBy({
+      left: direction === "left" ? -cardWidth : cardWidth,
+      behavior: "smooth",
+    });
+  }
+};
 
  
 
