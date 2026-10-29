@@ -1,0 +1,132 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+html{
+  padding-right: 0 !important;
+  
+}
+
+.loader {
+  width: 50px;
+  --b: 8px; 
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(#0000 10%,#5bc76e) content-box;
+  -webkit-mask:
+    repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+    radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+  -webkit-mask-composite: destination-in;
+          mask-composite: intersect;
+  animation:l4 1s infinite steps(10);
+}
+@keyframes l4 {to{transform: rotate(1turn)}}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #DFEEE2;
+  width: 35px !important; 
+  height: 35px !important; 
+  border-radius: 50%; 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+  cursor: pointer;
+  margin-left:20px;
+   transition: all 0.3s ease ;
+}
+
+.swiper-button-next svg,
+.swiper-button-prev svg {
+  width: 22px !important;
+  height: 14px !important;
+ color: #16A34A !important;
+
+
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: white;
+  color: white;
+   transform: scale(1.1);
+}
+
+
+.swiper-button-next svg:hover,
+.swiper-button-prev svg:hover{
+  color: #15803D !important;
+}
+.swiper-button-next{
+  right: 15px !important;
+}
+.swiper-button-prev{
+left : 15px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 10px !important;  
+  height: 10px !important; 
+  background-color: white !important;
+  opacity: 0.5 !important;   
+  border-radius: 50% !important; 
+  transition: all 0.3s ease-in-out !important; 
+  margin: 0 5px !important; 
+}
+
+.swiper-pagination-bullet-active {
+  width: 30px !important;  
+  border-radius: 5px !important; 
+  opacity: 1 !important;   
+  background-color: white !important; 
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(100px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);   
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 1s ease-out forwards;
+}
+
+
+@keyframes fadeRightLeft {
+  from {
+    opacity: 0;
+    transform: translatex(-100px); 
+  }
+  to {
+    opacity: 1;
+    transform: translatex(0);   
+  }
+}
+
+.animate-fade-right-left {
+  animation: fadeRightLeft 1s ease-out forwards;
+}
+
+
+
+@keyframes fadeLeftRight {
+  from {
+    opacity: 0;
+    transform: translatex(100px); 
+  }
+  to {
+    opacity: 1;
+    transform: translatex(0);   
+  }
+}
+
+.animate-fade-left-right {
+  animation: fadeLeftRight 1s ease-out forwards;
+}
+.active {
+  color: #16A34A;
+}
+
