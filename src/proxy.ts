@@ -12,8 +12,7 @@ console.log(pathname);
 const isAuthPages = ['/login' , '/register'].includes(pathname)
 
 
-// const token =await getToken({req : request})
-// console.log(token);
+
 const token = await getToken({
   req: request,
   secret: process.env.NEXTAUTH_SECRET,
