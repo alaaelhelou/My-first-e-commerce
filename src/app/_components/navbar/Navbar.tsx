@@ -17,7 +17,7 @@ import { usePathname } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react';
 import ProfileDropDown from '../profileDropDown/profileDropDown';
 import { getAllSubCategories } from '@/api/AllSubCategory.api';
-import { AllSubCategoriesDataType, AllSubCategoryType} from '@/types/AllSubCategories.type';
+import { AllSubCategoriesDataType, AllSubCategoryType } from '@/types/AllSubCategories.type';
 import { CartContext } from '@/context/CartContext';
 import { WishlistContext } from '@/context/WishlistItems';
 
@@ -36,18 +36,18 @@ export default function AppNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [sideBarr, setSideBarr] = useState(false)
   const [subData, setsubData] = useState<AllSubCategoriesDataType[]>([])
-  const {cartCount} = useContext(CartContext)  as {cartCount : number}
-  const {wishlistCount} = useContext(WishlistContext)  as {wishlistCount : number}
- 
+  const { cartCount } = useContext(CartContext) as { cartCount: number }
+  const { wishlistCount } = useContext(WishlistContext) as { wishlistCount: number }
+
 
 
   const path = usePathname();
- 
+
   async function getSucategory() {
     const res = await getAllSubCategories();
     setsubData(res?.data)
-    
-  
+
+
   }
 
   function handleLogOut() {
@@ -174,33 +174,36 @@ export default function AppNavbar() {
                       </Button>
                     </DropdownTrigger>
 
+                 
+
+
                     <DropdownMenu
                       aria-label="Categories Menu"
-                      className=" bg-white rounded-2xl"
+                      className="bg-white rounded-2xl"
                       disableAnimation={true}
+                      items={[
+                        { key: "all", name: "All Categories", href: "/categories" },
+                        ...(subData ?? [])
+                          .filter((item: AllSubCategoriesDataType) =>
+                            ["Bags & luggage", "Men's Clothing", "Women's Clothing"].includes(item.name)
+                          )
+                          .map((item: AllSubCategoriesDataType) => ({
+                            key: item._id,
+                            name: item.name,
+                            href: `/subCategories/${item._id}`,
+                          })),
+                      ]}
                     >
-                      <DropdownItem
-                      className='py-2 px-3 rounded-md text-zinc-600 transition-colors data-[hover=true]:text-emerald-600 data-[hover=true]:bg-emerald-50/50' key="all">
-                        <Link href={'/categories'}>
-                          All Categories
-                        </Link>
-                      </DropdownItem>
-
-                      {subData.filter((item : AllSubCategoriesDataType)=>["Bags & luggage","Men's Clothing","Women's Clothing"].includes(item.name))
-                      .map((item)=> <DropdownItem
-                       key={item._id}
-                       className='py-2 px-3 rounded-md text-zinc-600 transition-colors data-[hover=true]:text-emerald-600 data-[hover=true]:bg-emerald-50/50'
-                       >
-
-                        <Link href={`/subCategories/${item._id}`}>{item.name}</Link>
-
-                      </DropdownItem>)
-                      }
-
-                  
-
-                      
+                      {(item) => (
+                        <DropdownItem
+                          key={item.key}
+                          className="py-2 px-3 rounded-md text-zinc-600 transition-colors data-[hover=true]:text-emerald-600 data-[hover=true]:bg-emerald-50/50"
+                        >
+                          <Link href={item.href}>{item.name}</Link>
+                        </DropdownItem>
+                      )}
                     </DropdownMenu>
+
                   </Dropdown>
 
                 </div>
@@ -224,10 +227,10 @@ export default function AppNavbar() {
 
                 <Link className="relative p-2.5 rounded-full hover:bg-gray-100 transition-colors group" title="Wishlist" href="/wishlist">
                   <i className="fa-regular fa-heart text-xl text-gray-500 group-hover:text-green-600 transition-colors"></i>
-                 {wishlistCount > 0 && <span className='absolute top-0.5 right-0.5 size-[18px] rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white'>
+                  {wishlistCount > 0 && <span className='absolute top-0.5 right-0.5 size-[18px] rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white'>
                     {wishlistCount > 9 ? `+9` : `${wishlistCount}`}
-                    
-                  </span> } 
+
+                  </span>}
                 </Link>
 
                 <Link className="relative p-2.5 rounded-full hover:bg-gray-100 transition-colors group" title="Cart" href="/cart">
