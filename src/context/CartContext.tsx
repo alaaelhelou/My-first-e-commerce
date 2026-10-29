@@ -2,13 +2,18 @@
 import { createContext, useState } from "react";
 
 
-export const CartContext = createContext()
+ interface CartContextType {
+  cartCount: number;
+  setCartCount: (val: number) => void;
+}
+
+export const CartContext = createContext<CartContextType | null>(null);
 
 
 export default function CartContextProvider({children} : {children:React.ReactNode}){
 
 
-    const [cartCount, setCartCount] = useState(null)
+    const [cartCount, setCartCount] = useState<number>(0)
 
     return <CartContext.Provider value={{cartCount , setCartCount}}>
 
