@@ -43,7 +43,7 @@ export default function Login() {
   
     }
   )
-
+console.log("Login response:", response);
   if(response?.ok){
     
     toast.success("Log in successful" , {
