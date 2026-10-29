@@ -17,7 +17,7 @@ import { usePathname } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react';
 import ProfileDropDown from '../profileDropDown/profileDropDown';
 import { getAllSubCategories } from '@/api/AllSubCategory.api';
-import { AllSubCategoriesDataType} from '@/types/AllSubCategories.type';
+import { AllSubCategoriesDataType, AllSubCategoryType} from '@/types/AllSubCategories.type';
 import { CartContext } from '@/context/CartContext';
 import { WishlistContext } from '@/context/WishlistItems';
 
@@ -35,7 +35,7 @@ export default function AppNavbar() {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const [sideBarr, setSideBarr] = useState(false)
-  const [subData, setsubData] = useState([])
+  const [subData, setsubData] = useState<AllSubCategoriesDataType[]>([])
   const {cartCount} = useContext(CartContext)  as {cartCount : number}
   const {wishlistCount} = useContext(WishlistContext)  as {wishlistCount : number}
  
@@ -44,9 +44,10 @@ export default function AppNavbar() {
   const path = usePathname();
  
   async function getSucategory() {
-    let response  = await getAllSubCategories()
+    const res = await getAllSubCategories();
+    setsubData(res?.data)
     
-    setsubData(response?.data)
+  
   }
 
   function handleLogOut() {
