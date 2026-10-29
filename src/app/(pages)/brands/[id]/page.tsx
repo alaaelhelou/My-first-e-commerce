@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
-export default async function SpecificBrand({params}) {
+export default async function SpecificBrand({params} : {params : Promise<{id : string}>}) {
     let {id} = await params;
     
     let response = await fetch(`https://ecommerce.routemisr.com/api/v1/brands/${id}`)

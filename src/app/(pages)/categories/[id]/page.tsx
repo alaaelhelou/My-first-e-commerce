@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react'
 import SubCategories from '../../subCategories/page';
 
-export default async function SpecifiCategory({params}) {
+export default async function SpecifiCategory({params} : {params : Promise<{id : string}>}) {
 
     let { id } = await params;
         console.log(id);

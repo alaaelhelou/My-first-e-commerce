@@ -34,14 +34,9 @@ import ProductRating from '@/app/_components/ProductRating/ProductRating';
 
 
 
-export default async function ProductDetails({ params }: { params: string }) {
+export default async function ProductDetails({params} : {params : Promise<{id : string}>}) {
 
-    console.log(await params ,"iddddParamss");
-    
-
-
-
-    let { id } : {id : string}= await params;
+    let { id }= await params;
 
     console.log(id , "idd");
 

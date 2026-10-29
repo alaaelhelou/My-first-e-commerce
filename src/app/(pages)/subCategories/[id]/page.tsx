@@ -6,11 +6,11 @@ import { SpecificSubcategoryDataType } from '@/types/AllSubCategories.type';
 import Link from 'next/link';
 import React from 'react'
 
-export default async function SpecificSubcategories({ params }: { params: string }) {
+export default async function SpecificSubcategories({params} : {params : Promise<{id : string}>}) {
 
 
 
-    const { id }: { id: string } = await params;
+    const { id } = await params;
     console.log(id, "subCategoryId");
 
     const res: SpecificSubcategoryDataType = await getSpecificSubCategories(id);
