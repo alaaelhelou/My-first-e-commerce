@@ -43,14 +43,14 @@ export default function Login() {
   
     }
   )
-  console.log("responseeee" ,  response);
+
   if(response?.ok){
     await new Promise((resolve) => setTimeout(resolve, 2000));
     toast.success("Log in successful" , {
       duration : 2000
     }
     )
-    router.push("/")
+    router.replace("/")
   }else{
     toast.error(response?.error || "Login failed")
 
